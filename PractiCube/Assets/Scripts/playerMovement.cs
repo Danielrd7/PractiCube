@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,7 @@ public class playerMovement : MonoBehaviour
 
     public int totalJumps = 1;
     int leftJumps;
+    bool inWall;
 
     void Start()
     {
@@ -37,9 +39,17 @@ public class playerMovement : MonoBehaviour
         {
             if (leftJumps > 0)
             {
-                rb.linearVelocity = Vector3.zero;
-                rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
-                leftJumps--;
+                if (inWall)
+                {
+                    rb.AddForce(new Vector2(-moveDirection.x * 5 * speed, jumpForce), ForceMode.Impulse);
+                    leftJumps--;
+                }
+                else
+                {
+                    rb.linearVelocity = Vector3.zero;
+                    rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+                    leftJumps--;
+                }
             }
         }
     }
@@ -54,11 +64,25 @@ public class playerMovement : MonoBehaviour
         saltar.action.started -= Saltar;
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Estructura"))
+        if (other.gameObject.CompareTag("Pared"))
         {
             leftJumps = totalJumps;
+            inWall = true;
+        }
+
+        if (other.gameObject.CompareTag("Suelo"))
+        {
+            leftJumps = totalJumps;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pared"))
+        {
+            inWall = false;
         }
     }
 }

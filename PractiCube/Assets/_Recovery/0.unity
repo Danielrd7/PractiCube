@@ -333,10 +333,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 120669002907839839, guid: 674ff223bca7bd64c8a9ce7db5f92d04, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 2876097536973856947, guid: 674ff223bca7bd64c8a9ce7db5f92d04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -380,14 +376,6 @@ PrefabInstance:
     - target: {fileID: 3195365453831433040, guid: 674ff223bca7bd64c8a9ce7db5f92d04, type: 3}
       propertyPath: m_Name
       value: marco
-      objectReference: {fileID: 0}
-    - target: {fileID: 8936930544577839984, guid: 674ff223bca7bd64c8a9ce7db5f92d04, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 9013891743304172011, guid: 674ff223bca7bd64c8a9ce7db5f92d04, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
