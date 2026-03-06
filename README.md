@@ -2,8 +2,9 @@
 
 Un plataformero de cubos
 
-movimiento actual:
+**movimiento actual:**
 
 Izquierda → <
 Derecha → >
 Salto → z
+Dash → c
