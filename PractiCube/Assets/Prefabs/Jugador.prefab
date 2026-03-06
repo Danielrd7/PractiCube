@@ -141,7 +141,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5192140463300863236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::playerMovement
   speed: 7
   jumpForce: 7
+  dashForce: 35
   move: {fileID: 8597526235637223121, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
   saltar: {fileID: 4685697760929044419, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
+  dash: {fileID: 8039989380193989297, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
   totalJumps: 2
