@@ -12,9 +12,13 @@ public class playerMovement : MonoBehaviour
     public InputActionReference move;
     public InputActionReference saltar;
 
+    public int totalJumps = 1;
+    int leftJumps;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        leftJumps = totalJumps;
     }
 
     void Update()
@@ -31,7 +35,12 @@ public class playerMovement : MonoBehaviour
     {
         if (context.started)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+            if (leftJumps > 0)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+                leftJumps--;
+            }
         }
     }
 
@@ -44,4 +53,13 @@ public class playerMovement : MonoBehaviour
     {
         saltar.action.started -= Saltar;
     }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Estructura"))
+        {
+            leftJumps = totalJumps;
+        }
+    }
 }
+
