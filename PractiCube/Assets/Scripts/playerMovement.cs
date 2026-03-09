@@ -16,6 +16,9 @@ public class playerMovement : MonoBehaviour
     public InputActionReference move;
     public InputActionReference saltar;
     public InputActionReference dash;
+    public InputActionReference interact;
+
+    private Tp currentTp;
 
     public int totalJumps = 1;
     int leftJumps;
@@ -74,16 +77,26 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    void Interact(InputAction.CallbackContext context)
+    {
+        if (currentTp != null)
+        {
+            currentTp.onInteract();
+        }
+    }
+
     private void OnEnable()
     {
         saltar.action.started += Saltar;
         dash.action.started += Dash;
+        interact.action.started += Interact;
     }
 
     private void OnDisable()
     {
         saltar.action.started -= Saltar;
         dash.action.started -= Dash;
+        interact.action.started -= Interact;
     }
 
     void OnTriggerEnter(Collider other)
@@ -101,6 +114,18 @@ public class playerMovement : MonoBehaviour
             leftDashes = totalDashes;
             inGround = true;
         }
+
+        Tp tp = other.GetComponent<Tp>();
+        if (tp != null && other.gameObject.CompareTag("Puerta"))
+        {
+            currentTp = tp;
+        }
+
+        if (tp != null && other.gameObject.CompareTag("Lazer"))
+        {
+            currentTp = tp;
+            currentTp.onInteract();
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -113,6 +138,12 @@ public class playerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Suelo"))
         {
             inGround = false;
+        }
+
+        Tp tp = other.GetComponent<Tp>();
+        if (tp != null && tp == currentTp && other.gameObject.CompareTag("Puerta"))
+        {
+            currentTp = null;
         }
     }
 

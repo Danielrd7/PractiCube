@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jugador
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1b69b1b1aabd2346884a79fe75c06f3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -135,11 +139,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerMovement
   speed: 7
-  jumpForce: 2
-  dashForce: 7
+  jumpForce: 7
+  dashForce: 35
   move: {fileID: 8597526235637223121, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
   saltar: {fileID: 4685697760929044419, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
   dash: {fileID: 8039989380193989297, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
+  interact: {fileID: -1435161104527119412, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
   totalJumps: 2
   totalDashes: 1
 --- !u!114 &269633544989603177
