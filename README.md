@@ -6,5 +6,7 @@ Un plataformero de cubos
 
 Izquierda → <
 Derecha → >
-Salto → z
+Abajo (esto afecta la direccion del dash) → "Flecha hacia abajo"
+Saltar → "Espacio"
 Dash → c
+Interactuar → z
