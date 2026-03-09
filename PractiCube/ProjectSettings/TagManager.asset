@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Suelo
   - Pared
+  - Estructura
+  - Puerta
+  - Lazer
   layers:
   - Default
   - TransparentFX
