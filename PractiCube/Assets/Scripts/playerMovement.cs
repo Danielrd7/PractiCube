@@ -20,6 +20,7 @@ public class playerMovement : MonoBehaviour
 
     private Tp currentTp;
     private takeObject currentObject;
+    private pressButton currentButton;
 
     public int totalJumps = 1;
     int leftJumps;
@@ -118,14 +119,10 @@ public class playerMovement : MonoBehaviour
         {
             currentTp.onInteract();
         }
-    }
 
-    void Take(InputAction.CallbackContext context)
-    {
-        if (currentObject != null)
+        if (currentButton != null)
         {
-            currentObject.TakeObject();
-            currentObject = null;
+            currentButton.PressButton();
         }
     }
 
@@ -187,6 +184,11 @@ public class playerMovement : MonoBehaviour
             currentObject.TakeObject();
         }
 
+        pressButton button = other.GetComponent<pressButton>();
+        if (button != null && other.gameObject.CompareTag("Button"))
+        {
+            currentButton = button;
+        }
 
     }
 

@@ -11,6 +11,7 @@ TagManager:
   - Lazer
   - Jump
   - Dash
+  - Button
   layers:
   - Default
   - TransparentFX
