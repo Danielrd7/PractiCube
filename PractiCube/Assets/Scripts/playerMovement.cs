@@ -19,6 +19,7 @@ public class playerMovement : MonoBehaviour
     public InputActionReference interact;
 
     private Tp currentTp;
+    private takeObject currentObject;
 
     public int totalJumps = 1;
     int leftJumps;
@@ -28,16 +29,50 @@ public class playerMovement : MonoBehaviour
     bool inGround;
     bool isGrounded;
 
+    Renderer rend;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         leftDashes = totalDashes;
         leftJumps = totalJumps;
+        rend = GetComponent<Renderer>();
     }
 
     void Update()
     {
         moveDirection = move.action.ReadValue<Vector2>();
+
+        if (leftJumps <= 0)
+        {
+            rend.materials[3].color = new Color(0.3294f, 0.1647f, 0f);
+        }
+        else if (leftJumps == 1)
+        {
+            rend.materials[3].color = new Color(0.5216f, 0.2588f, 0f);
+        }
+        else if (leftJumps == 2)
+        {
+            rend.materials[3].color = new Color(0.7216f, 0.3608f, 0f);
+        }
+        else if (leftJumps >= 3)
+        {
+            rend.materials[3].color = new Color(1f, 0.502f, 0f);
+        }
+
+        if (leftDashes <= 0)
+        {
+            rend.materials[1].color = new Color(0.102f, 0.102f, 0.102f, 1f);
+        }
+        else if (leftDashes == 1)
+        {
+            rend.materials[1].color = new Color(0f, 0.0039f, 0.3725f, 1f);
+        }
+        else if (leftDashes >= 2)
+        {
+            rend.materials[1].color = new Color(0f, 0.0118f, 0.7608f);
+        }
+
     }
 
     void FixedUpdate()
@@ -85,6 +120,15 @@ public class playerMovement : MonoBehaviour
         }
     }
 
+    void Take(InputAction.CallbackContext context)
+    {
+        if (currentObject != null)
+        {
+            currentObject.TakeObject();
+            currentObject = null;
+        }
+    }
+
     private void OnEnable()
     {
         saltar.action.started += Saltar;
@@ -126,6 +170,24 @@ public class playerMovement : MonoBehaviour
             currentTp = tp;
             currentTp.onInteract();
         }
+
+        takeObject objJump = other.GetComponent<takeObject>();
+        if (objJump != null && other.gameObject.CompareTag("Jump"))
+        {
+            currentObject = objJump;
+            leftJumps ++;
+            currentObject.TakeObject();
+        }
+
+        takeObject objDash = other.GetComponent<takeObject>();
+        if (objDash != null && other.gameObject.CompareTag("Dash"))
+        {
+            currentObject = objDash;
+            leftDashes ++;
+            currentObject.TakeObject();
+        }
+
+
     }
 
     void OnTriggerExit(Collider other)

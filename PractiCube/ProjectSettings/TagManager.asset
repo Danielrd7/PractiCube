@@ -9,6 +9,8 @@ TagManager:
   - Estructura
   - Puerta
   - Lazer
+  - Jump
+  - Dash
   layers:
   - Default
   - TransparentFX
