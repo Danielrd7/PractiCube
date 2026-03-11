@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f58c3874dc37e34e9d81053e45e50a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerMovement
-  speed: 7
+  speed: 4
   jumpForce: 7
   dashForce: 35
   move: {fileID: 8597526235637223121, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
