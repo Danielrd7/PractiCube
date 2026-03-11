@@ -8,10 +8,14 @@ TagManager:
   - Pared
   - Estructura
   - Puerta
-  - Lazer
   - Jump
   - Dash
   - Button
+  - Laser
+  - LaserFase1Fase2
+  - ButtonFase1Fase2
+  - LaserNivel9
+  - Final
   layers:
   - Default
   - TransparentFX

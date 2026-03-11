@@ -21,16 +21,22 @@ public class playerMovement : MonoBehaviour
     private Tp currentTp;
     private takeObject currentObject;
     private pressButton currentButton;
+    private fase1Fase2 currentFase1Fase2;
+    private fasesnivel9 currentFaseNivel9;
 
     public int totalJumps = 1;
     int leftJumps;
     public int totalDashes = 1;
     int leftDashes;
+    bool inButtonFase1Fase2;
+    bool inDoor;
     bool inWall;
     bool inGround;
     bool isGrounded;
 
     Renderer rend;
+
+    static bool fasePrimeraVez = false;
 
     void Start()
     {
@@ -38,6 +44,12 @@ public class playerMovement : MonoBehaviour
         leftDashes = totalDashes;
         leftJumps = totalJumps;
         rend = GetComponent<Renderer>();
+
+        if (fasePrimeraVez == false)
+        {
+            fases.fase = 1;
+            fasePrimeraVez = true;
+        }
     }
 
     void Update()
@@ -115,6 +127,7 @@ public class playerMovement : MonoBehaviour
 
     void Interact(InputAction.CallbackContext context)
     {
+
         if (currentTp != null)
         {
             currentTp.onInteract();
@@ -123,6 +136,16 @@ public class playerMovement : MonoBehaviour
         if (currentButton != null)
         {
             currentButton.PressButton();
+        }
+
+        if (inDoor == true)
+        {
+            fases.fase = 1;
+        }
+
+        if (inButtonFase1Fase2 == true)
+        {
+            currentFase1Fase2.CambioFase();
         }
     }
 
@@ -144,15 +167,31 @@ public class playerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pared"))
         {
-            leftJumps = totalJumps;
-            leftDashes = totalDashes;
+            if (leftJumps != 3)
+            {
+                leftJumps = totalJumps;
+            }
+
+            if (leftDashes != 2)
+            {
+                leftDashes = totalDashes;
+            }
+
             inWall = true;
         }
 
         if (other.gameObject.CompareTag("Suelo"))
         {
-            leftJumps = totalJumps;
-            leftDashes = totalDashes;
+            if (leftJumps != 3)
+            {
+                leftJumps = totalJumps;
+            }
+
+            if (leftDashes != 2)
+            {
+                leftDashes = totalDashes;
+            }
+
             inGround = true;
         }
 
@@ -160,12 +199,33 @@ public class playerMovement : MonoBehaviour
         if (tp != null && other.gameObject.CompareTag("Puerta"))
         {
             currentTp = tp;
+            inDoor = true;
         }
 
-        if (tp != null && other.gameObject.CompareTag("Lazer"))
+        if (tp != null && other.gameObject.CompareTag("Laser"))
         {
             currentTp = tp;
             currentTp.onInteract();
+        }
+
+        fase1Fase2 fase1AFase2 = other.GetComponent<fase1Fase2>();
+        if (fase1AFase2 != null && other.gameObject.CompareTag("LaserFase1Fase2"))
+        {
+            currentTp = tp;
+            currentTp.onInteract();
+            
+            currentFase1Fase2 = fase1AFase2;
+            currentFase1Fase2.CambioFase();
+        }
+
+        fasesnivel9 faseNivel9 = other.GetComponent<fasesnivel9>();
+        if (faseNivel9 != null && other.gameObject.CompareTag("LaserNivel9"))
+        {
+            currentTp = tp;
+            currentTp.onInteract();
+            
+            currentFaseNivel9 = faseNivel9;
+            currentFaseNivel9.CambioFases();
         }
 
         takeObject objJump = other.GetComponent<takeObject>();
@@ -190,6 +250,13 @@ public class playerMovement : MonoBehaviour
             currentButton = button;
         }
 
+        if (fase1AFase2 != null && other.gameObject.CompareTag("ButtonFase1Fase2"))
+        {
+            currentButton = button;
+            currentFase1Fase2 = fase1AFase2;
+            inButtonFase1Fase2 = true;
+        }
+
     }
 
     void OnTriggerExit(Collider other)
@@ -208,14 +275,28 @@ public class playerMovement : MonoBehaviour
         if (tp != null && tp == currentTp && other.gameObject.CompareTag("Puerta"))
         {
             currentTp = null;
+            inDoor = false;
+        }
+
+        fase1Fase2 fase1AFase2 = other.GetComponent<fase1Fase2>();
+        if (fase1AFase2 != null && other.gameObject.CompareTag("ButtonFase1Fase2"))
+        {
+            currentButton = null;
+            currentFase1Fase2 = null;
+            inButtonFase1Fase2 = false;
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Suelo"))        {
+        if (other.gameObject.CompareTag("Suelo")) {
             isGrounded = true;
-            leftDashes = totalDashes;
+            
+            if (leftDashes != 2)
+            {
+                leftDashes = totalDashes;
+            }
+            
         }
         else
         {

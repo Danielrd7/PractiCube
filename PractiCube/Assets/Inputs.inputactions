@@ -91,7 +91,7 @@
                 {
                     "name": "",
                     "id": "91b7dc82-8d07-45ee-b70b-029fd7872455",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -113,7 +113,7 @@
                 {
                     "name": "",
                     "id": "4e60e1c2-5ddb-4b58-8dd9-0b7f0c931573",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

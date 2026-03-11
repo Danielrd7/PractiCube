@@ -5,15 +5,45 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/cambioDeEscena2.unity
-    guid: d39263ca2efd5994fb30f716c5e457e6
+    path: Assets/Scenes/Niveles/Nivel1.unity
+    guid: bccf49ce2e86e124f8a62be73860b23b
   - enabled: 1
-    path: Assets/Scenes/cambioDeEscena1.unity
-    guid: 80b817a504c7c784e9088e4746dbca31
+    path: Assets/Scenes/Niveles/Nivel2.unity
+    guid: 80bf20009157b27409420cc387e5db37
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Nivel3.unity
+    guid: cd22436d60787ae4e8ea3132670e7eaa
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Nivel4.unity
+    guid: 8bc5d7470dfbd304b88567ab26760ef1
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Nivel5.unity
+    guid: 8dd6776668050654b8174d65c4ab8c85
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Nivel6.unity
+    guid: d9880dd027bc095448e8f717f8820e15
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Nivel7.unity
+    guid: b93f6ca29c1b52a4aa5b4b8271a8f29f
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Nivel8.unity
+    guid: 364afdbd8d7549449b1f52fc5e58af88
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Nivel9.unity
+    guid: b38a09b076575c140b701c430bcb16a1
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Nivel10.unity
+    guid: ca0838e69ab6ddf4d823d5bdd77bbf02
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Desconocido1.unity
+    guid: 0e7fbe26e98418d4caad67cd0e89d98c
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Desconocido2.unity
+    guid: 0787c3f0c240c8940bd6a7787758ded1
+  - enabled: 1
+    path: Assets/Scenes/Niveles/Desconocido3.unity
+    guid: de723bfc9e141e14692990d9c044651d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 323e7c036d1b56c40922fdac0fa8762d, type: 3}
   m_UseUCBPForAssetBundles: 0

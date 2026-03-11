@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6871074177314779351}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Lazer
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 601988ec139c69148ac526c75106b4e5, type: 3}
       propertyPath: m_Name
-      value: LazerPegado
+      value: LaserPegado
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
