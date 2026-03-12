@@ -1,12 +1,7 @@
 # PractiCube
 
-Un plataformero de cubos
+Un plataformero de cubos en Unity3D
 
-**movimiento actual:**
+**Instrucciones:**
 
-Izquierda → <
-Derecha → >
-Abajo (esto afecta la direccion del dash) → "Flecha hacia abajo"
-Saltar → "Espacio"
-Dash → c
-Interactuar → z
+El ejecutable se encuentra en la carpeta "Juego"

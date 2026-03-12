@@ -16,6 +16,8 @@ TagManager:
   - ButtonFase1Fase2
   - LaserNivel9
   - Final
+  - LaserSinTransicion
+  - PuertaNivel10
   layers:
   - Default
   - TransparentFX
