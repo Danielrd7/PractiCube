@@ -19,10 +19,12 @@ public class playerMovement : MonoBehaviour
     public InputActionReference interact;
 
     private Tp currentTp;
+    private TpSinTransicion currentTpSinTransicion;
     private takeObject currentObject;
     private pressButton currentButton;
     private fase1Fase2 currentFase1Fase2;
     private fasesnivel9 currentFaseNivel9;
+    private TpNivel10 currentTpNivel10;
 
     public int totalJumps = 1;
     int leftJumps;
@@ -133,6 +135,11 @@ public class playerMovement : MonoBehaviour
             currentTp.onInteract();
         }
 
+        if (currentTpNivel10 != null)
+        {
+            currentTpNivel10.onInteract();
+        }
+
         if (currentButton != null)
         {
             currentButton.PressButton();
@@ -202,10 +209,29 @@ public class playerMovement : MonoBehaviour
             inDoor = true;
         }
 
+        TpNivel10 tpNivel10 = other.GetComponent<TpNivel10>();
+        if (tpNivel10 != null && other.gameObject.CompareTag("PuertaNivel10"))
+        {
+            currentTpNivel10 = tpNivel10;
+            inDoor = true;
+        }
+
+        if (tpNivel10 != null && other.gameObject.CompareTag("Final"))
+        {
+            TransicionEscenasUI.Instance.DisolverSalida();
+        }
+
         if (tp != null && other.gameObject.CompareTag("Laser"))
         {
             currentTp = tp;
             currentTp.onInteract();
+        }
+
+        TpSinTransicion tpSinTransicion = other.GetComponent<TpSinTransicion>();
+        if (tpSinTransicion != null && other.gameObject.CompareTag("LaserSinTransicion"))
+        {
+            currentTpSinTransicion = tpSinTransicion;
+            currentTpSinTransicion.onInteract();
         }
 
         fase1Fase2 fase1AFase2 = other.GetComponent<fase1Fase2>();
@@ -278,6 +304,13 @@ public class playerMovement : MonoBehaviour
             inDoor = false;
         }
 
+        TpNivel10 tpNivel10 = other.GetComponent<TpNivel10>();
+        if (tpNivel10 != null && tpNivel10 == currentTpNivel10 && other.gameObject.CompareTag("PuertaNivel10"))
+        {
+            currentTpNivel10 = null;
+            inDoor = false;
+        }
+
         fase1Fase2 fase1AFase2 = other.GetComponent<fase1Fase2>();
         if (fase1AFase2 != null && other.gameObject.CompareTag("ButtonFase1Fase2"))
         {
@@ -311,5 +344,6 @@ public class playerMovement : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         rb.Sleep();
     }
+
 }
 

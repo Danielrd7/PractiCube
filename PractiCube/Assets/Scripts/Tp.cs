@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Tp : MonoBehaviour
 {
@@ -7,6 +8,15 @@ public class Tp : MonoBehaviour
 
     public void onInteract()
     {
+        StartCoroutine(CargarEscena());
+    }
+
+    IEnumerator CargarEscena()
+    {
+        TransicionEscenasUI.Instance.BloqueSalida();
+
+        yield return new WaitForSeconds(.5f);
+
         SceneManager.LoadScene(sceneToLoad);
     }
 }
