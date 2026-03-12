@@ -1,7 +1,7 @@
 # PractiCube
 
-Un plataformero de cubos en Unity3D
+Un plataformero de cubos hecho en Unity3D
 
 **Instrucciones:**
 
-El ejecutable se encuentra en la carpeta "Juego"
+Para jugar, descargue el zip (PractiCube.zip) y descomprimalo, dentro se encuentra el .exe (PractiCube.exe) ejecútelo para abrir el juego
